@@ -230,6 +230,10 @@ angular.module('ui.mask', [])
                                 angular.forEach(maskComponents, function(component) {
                                     value = value.replace(component, '');
                                 });
+								// Empty mask, so don't try to apply mask, just return the value
+								if (maskPatterns.length === 0) {
+									return value;
+								}
                                 angular.forEach(value.split(''), function(chr) {
                                     if (maskPatternsCopy.length && maskPatternsCopy[0].test(chr)) {
                                         valueUnmasked += chr;
